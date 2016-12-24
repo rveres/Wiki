@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block controls %}
+
+    {% if user %}
+        <a class="login-link" href="{{edit_path}}">edit</a>
+        |
+        <a class="login-link" href="{{history_path}}">history</a>
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+    
+    {{match | safe}}
+
+{% endblock %}

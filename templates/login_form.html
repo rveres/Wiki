@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Log In</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="/static/main.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <h2>Log In</h2>
+            <a href="/signup">Click here</a> to sign up.
+            <div class="demo-card-wide mdl-card mdl-shadow--6dp">
+                <form method="post">
+                    <br>
+                    <div class="error">
+                        {{error}}
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="username" id="username" value="{{username}}">
+                        <label class="mdl-textfield__label" for="username">Username</label>
+                    </div>
+                    <br><br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" name="password" id="password" value="">
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                </div>
+
+                    <input type="hidden" name="next_url" value="{{next_url}}">
+
+                    <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+
+                </form>
+        </div>
+    </body>
+
+</html>

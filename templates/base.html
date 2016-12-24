@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="/static/main.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <title>My Wiki</title>
+    </head>
+    
+    <body>
+        <a href="/" class="main-title">
+            My Wiki
+        </a>
+        
+        <div class="control-area">
+        {% block controls %}
+        {% endblock %}
+        </div>
+        
+        <div class="login-area">
+            {% if user %}
+                Hi, <b>{{user.name}}</b> (<a class="login-link" href="/logout">logout</a>)
+            {% else %}
+                <a class="login-link" href="/login">login</a>
+                |
+                <a class="login-link" href="/signup">sign up</a>
+            {% endif %}
+             
+        </div>    
+        
+        <div id="content">
+        {% block content %}
+        {% endblock %}
+        </div>
+        
+        <div class="footer">
+            <div class="credits">
+                A project from <strong>Robert Veres</strong> • v2016.17 • Made with Code, Material Design, and ♡.
+            </div>
+            <div class="photocreds">
+                Background Image: Gavin Hardcastle on flickr
+            </div>
+        </div>
+        
+    </body>
+
+</html>

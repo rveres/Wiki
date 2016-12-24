@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block controls %}
+    {% if match %}
+        <a class="login-link" href="{{path}}">view</a>
+        |
+        <a class="login-link" href="{{history_path}}">history</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <form method="post"> 
+        <textarea name="content" id="edit-content">{{ match }}</textarea>
+        <br>
+        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="save-button" type="submit" value="Save">
+        <div class="mdl-tooltip" data-mdl-for="save-button">
+        Save this content</div>
+        <input type="hidden" name="path" value="{{path}}">
+    </form>
+
+{% endblock %}

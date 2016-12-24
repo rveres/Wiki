@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        
+        <title>Sign Up</title>
+        
+        <link href="/static/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <link href="/static/main.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <div class="wrapper">
+            <h2>Sign Up</h2>
+            <a href="/login">Click here</a> to login.
+            <div class="demo-card-wide mdl-card mdl-shadow--6dp">
+                <form method="post">
+                    <br>
+                    <div class="error">
+                        {{error_exist}}
+                    </div>
+                    <div class="error">
+                        {{error_username}}
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="username" id="username" value="{{username}}">
+                        <label class="mdl-textfield__label" for="username">Username</label>
+                    </div>
+                    <div class="error">
+                        {{error_password}}  
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" name="password" id="password" value="">
+                        <label class="mdl-textfield__label" for="password">Password</label>
+                    </div>
+                    <div class="error">
+                        {{error_verify}}
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" name="verify" id="verify" value="">
+                        <label class="mdl-textfield__label" for="verify">Verify Password</label>
+                    </div>
+                    <div class="error">
+                        {{error_email}}
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name="email" id="email" value="{{email}}">
+                        <label class="mdl-textfield__label" for="email">Email (optional)</label>
+                    </div>
+
+                    <input type="hidden" name="next_url" value="{{next_url}}">
+
+                </div>
+                        
+                <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+
+            </form>
+        </div>
+    </body>
+
+</html>

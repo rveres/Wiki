@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block controls %}
+    <a class="login-link" href="{{view_path}}">view</a>
+    |
+    <a class="login-link" href="{{edit_path}}">edit</a>
+{% endblock %}
+
+{% block content %}
+        <table>
+            <tbody class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                {% for page in stored_pages %}
+                    <tr>
+                        <td class="historic-time">
+                            {{page.created.strftime("%b %d, %Y %X")}}
+                        </td>
+                        <td style="color:black" class="mdl-data-table__cell--non-numeric">
+                            {{page.content[:100]}}
+                        </td>
+                        <td class="control-tab">
+                            <a href="{{view_path}}?v={{page.key().id()}}">view</a>
+                        </td>
+                        {% if user %}
+                            <td class="control-tab">
+                                <a href="{{edit_path}}?v={{page.key().id()}}">edit</a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}
