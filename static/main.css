@@ -65,15 +65,29 @@ a {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-.error {
+#author {
+    font-weight: bold;
+    font-size: 18;
+}
+
+.error, .usrError, .pswError {
     color: red;
 }
 
+#redirbut, #redirbut2 {
+    color:white;
+}
+
 .wrapper {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signupdiv {
+    margin: 0 auto;
 }
 
 label {
@@ -85,10 +99,11 @@ label + label {
     margin-top: 20px;
 }
 
-textarea {
+#editContent {
   width: 500px;
   height: 400px;
   font-size: 17px;
+  resize: none;
 }
 
 input[type=submit] {
@@ -169,11 +184,13 @@ tr:nth-child(odd){background-color: #f2f2f2}
     text-align: center;
 }
 
-.footer {
+#footer {
     font-family: 'Source Sans Pro', sans-serif;
+    text-align: right;
     position: fixed;
     bottom: 0;
-    margin-left: 30%;
+    left: 0;
+    width: 100%;
 }
 
 .credits {

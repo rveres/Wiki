@@ -9,14 +9,29 @@
 {% endblock %}
 
 {% block content %}
-
-    <form method="post"> 
-        <textarea name="content" id="edit-content">{{ match }}</textarea>
+    {% if match_author %}
+        <div id="author">Last edited by {{ match_author }}</div>
         <br>
-        <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="save-button" type="submit" value="Save">
-        <div class="mdl-tooltip" data-mdl-for="save-button">
-        Save this content</div>
-        <input type="hidden" name="path" value="{{path}}">
-    </form>
+    {% endif %}
+
+    <div id="editArea">
+        <form method="post" id="editForm"> 
+            <textarea name="content" id="editContent">{{ match_content }}</textarea>
+            <br>
+            <div id="saveButtonDiv">
+                <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="saveButton" type="submit" value="Save">
+            </div>
+            <br>
+            <div class="mdl-tooltip" data-mdl-for="saveButton">
+                Save this content
+            </div>
+            <input type="hidden" name="path" value="{{path}}">
+        </form>
+        <div id="redirButDiv">
+            <button class="mdl-button mdl-js-button" id="redirbut" onclick="window.location = '{{path}}'">
+                Cancel
+            </button>
+        </div>
+    </div>
 
 {% endblock %}

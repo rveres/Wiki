@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
         <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/static/base.js" type="text/javascript"></script>
         <title>My Wiki</title>
     </head>
     
@@ -35,14 +37,18 @@
         {% endblock %}
         </div>
         
-        <div class="footer">
-            <div class="credits">
-                A project from <strong>Robert Veres</strong> • v2016.17 • Made with Code, Material Design, and ♡.
+        <footer id="footer" class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo" style="font-size: 18px">by Robert Veres</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li> • </li>
+                    <div class="mdl-logo" style="font-size: 16px"><a href="https://github.com/thedeveloper733/Wiki">GitHub</a></div>
+                    <li>Version 2016.21</li>
+                    <li>Made with Code, Material Design, and ♡.</li>
+                    <li>Background image: Gavin Hardcastle on flickr</li>
+                </ul>
             </div>
-            <div class="photocreds">
-                Background Image: Gavin Hardcastle on flickr
-            </div>
-        </div>
+        </footer>
         
     </body>
 
