@@ -8,3 +8,6 @@ As a developer, I'm obligated to keep my users safe. That's why I've censored so
 However, you can access the live, working version of my wiki at: http://wiki-152802.appspot.com/. I'll be continuing to work on it for the forseeable future, so stay tuned for feature updates!
 
 Special thanks to: Steve Huffman for his amazing course that inspired the making of this wiki, Google for their Google App Engine Platform and Material Design, Flickr for the background image
+
+#Changelog:
+1/29/2017 - Added JavaScript files for responsive Signup, Login, and Post pages
