@@ -95,14 +95,19 @@ class User(db.Model):
 class Content(db.Model):
 	content = db.TextProperty(required = True)
 	path = db.StringProperty(required = True)
+	author = db.StringProperty(required = True)
 	created = db.DateTimeProperty(auto_now_add = True)
 
-def requested_page(update, path, new_content = None):
-	key = str(path)
-	page_content = memcache.get(key)
+def requested_page(update, path, new_content = None, new_author = None):
+	content_key = str(path)
+	author_key = content_key + ':author'
+	page_content = memcache.get(content_key)
+	page_author = memcache.get(author_key)
 	if update:
 		page_content = new_content
-		memcache.set(key, new_content)
+		page_author = new_author
+		memcache.set(content_key, new_content)
+		memcache.set(author_key, new_author)
 		return
 	elif page_content == None:
 		logging.error("DB QUERY PAGE")
@@ -110,11 +115,15 @@ def requested_page(update, path, new_content = None):
 		page_key = page_cursor.get()
 		if page_key:
 			page_content = page_key.content
+			page_author = page_key.author
 		else:
 			page_content = ""
-		memcache.set(key, page_content)
+			page_author = None
+		memcache.set(content_key, page_content)
+		memcache.set(author_key, page_author)
 
-	return page_content
+	results = {'content' : page_content, 'author' : page_author} 
+	return results
 
 def cached_history_page(update, path):
 	history_key = str(path) + '/history'
@@ -228,16 +237,21 @@ class WikiPage(WikiHandler):
 					self.write('404. The page could not be found.')
 					return
 				else:
-					match = match_key.content
+					match_content = match_key.content
+					match_author = match_key.author
 
 		else:
 			match = requested_page(False, path)
+			if match['content']:
+				match_content = match['content']
+				match_content = match_content.replace('\n','<br>')
+				match_content = match_content.replace('+', ' ')
+				match_author = match['author']
+			elif not match['content']:
+				self.redirect('/_edit' + path)
+				return
 
-		if match:
-			match = match.replace('\n','<br>')
-			self.render('wiki_page.html', edit_path = edit_path, history_path = history_path, match = match)
-		else:
-			self.redirect('/_edit' + path)
+		self.render('wiki_page.html', edit_path = edit_path, history_path = history_path, match_author = match_author, match_content = match_content)
 
 class EditPage(WikiHandler):
 	def get(self, path):
@@ -258,14 +272,19 @@ class EditPage(WikiHandler):
 					if not match_key:
 						match = ""
 					else:
-						match = match_key.content
+						match_content = match_key.content
+						match_author = match_key.author
 			else:
 				match = requested_page(False, path)
 
-				if match == None:
-					match = ""
+				if match['content'] == None or match['content'] == "":
+					match_content = ""
+					match_author = None
+				else:
+					match_content = match['content']
+					match_author = match['author']
 
-			self.render('edit_page.html', path = path, history_path = history_path, match = match)
+			self.render('edit_page.html', path = path, history_path = history_path, match_author = match_author, match_content = match_content)
 
 	def post(self, path):
 		if not self.user:
@@ -275,6 +294,7 @@ class EditPage(WikiHandler):
 
 		forward_path = self.request.get('path')
 		updated_content = self.request.get('content')
+		updated_author = '[undisclosed]'
 		match = requested_page(False, path)
 		if match == None:
 				match = ""
@@ -294,12 +314,12 @@ class EditPage(WikiHandler):
 			
 			bwd_file.close()
 			
-			p = Content(content = updated_content, path = forward_path)
+			p = Content(content = updated_content, path = forward_path, author = updated_author)
 			p.put()
 			logging.error("DB QUERY MOUNT")
 			time.sleep(0.1)
 
-			requested_page(True, forward_path, updated_content)
+			requested_page(True, forward_path, updated_content, updated_author)
 			cached_history_page(True, forward_path)
 
 		self.redirect(forward_path)
