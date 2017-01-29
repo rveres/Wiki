@@ -1,2 +1,2 @@
 linguist-language=Python
-templates/* linguist-vendored=false
+/templates/* linguist-vendored=false
