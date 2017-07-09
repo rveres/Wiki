@@ -9,5 +9,11 @@ However, you can access the live, working version of my wiki at: http://wiki-152
 
 Special thanks to: Steve Huffman for his amazing course that inspired the making of this wiki, Google for their Google App Engine Platform and Material Design, Flickr for the background image
 
-#Changelog:
+## Changelog:
 1/29/2017 - Added JavaScript files for responsive Signup, Login, and Post pages
+
+
+Robert Veres <br>
+@thedeveloper733 <br>
+www.robertveres.com <br>
+2017
