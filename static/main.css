@@ -10,7 +10,6 @@ body {
     width: 800px;
     margin: 0 auto;
     padding: 10px;
-    color: #333;
 
     text-align: center;
     background-image: url("/static/login_bg_img.jpg");
@@ -61,13 +60,13 @@ a {
     color: #EC407A;
 }
 
-.content {
+#content {
+    min-height: 600px;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
 #author {
-    font-weight: bold;
-    font-size: 18;
+    font-size: 16px;
 }
 
 .error, .usrError, .pswError {
@@ -88,6 +87,7 @@ a {
 
 #signupdiv {
     margin: 0 auto;
+    color: black;
 }
 
 label {
@@ -153,26 +153,22 @@ input[type=text], input[type=password] {
 }
 
 table {
-    border: none;
-    width: 775px;
-    font-size: 20px;
+    color: white;
     border-collapse: collapse;
 
     margin: auto;
 }
 
 td {
-    height: 35px;
+    color: white;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 5px solid #ddd;
     border-left: 1px solid #ddd;
 }
 
-tr:nth-child(odd){background-color: #f2f2f2}
-
 .historic-time {
     width: 170px;
-    color: #757575;
+    color: white;
 }
 
 .content-tab {
@@ -181,12 +177,12 @@ tr:nth-child(odd){background-color: #f2f2f2}
 
 .control-tab {
     width: 65px;
-    text-align: center;
+    color: white;
 }
 
 #footer {
     font-family: 'Source Sans Pro', sans-serif;
-    text-align: right;
+    text-align: left;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -199,4 +195,14 @@ tr:nth-child(odd){background-color: #f2f2f2}
 
 .photocreds {
     font-size: 10px;
+}
+
+#nav {
+    margin: 0 auto;
+    text-align: center;
+    background-color: #42a5f5;
+}
+
+#controls {
+    background-color: #1565c0;
 }

@@ -7,8 +7,8 @@ from google.appengine.ext import db
 
 import os
 import re
-'[undisclosed]'
-'[undisclosed]'
+import hashlib
+import hmac
 import logging
 import time
 
@@ -48,7 +48,7 @@ class WikiHandler(webapp2.RequestHandler):
 		return cookie_val and check_secure_val(cookie_val)
 
 	def login(self, user):
-		self.set_secure_cookie('user_id', '[undisclosed]')
+		self.set_secure_cookie('user_id', str(user.key().id()))
 
 	def logout(self):
 		self.response.headers.add_header('Set-Cookie', 'user_id=; Path=/')
@@ -294,7 +294,7 @@ class EditPage(WikiHandler):
 
 		forward_path = self.request.get('path')
 		updated_content = self.request.get('content')
-		updated_author = '[undisclosed]'
+		updated_author = str(User.by_id(int(self.read_secure_cookie('user_id'))).name)
 		match = requested_page(False, path)
 		if match == None:
 				match = ""
@@ -336,7 +336,7 @@ class HistoryPage(WikiHandler):
 			self.render('history_page.html', stored_pages = stored_pages, view_path = view_path, edit_path = edit_path)
 
 
-PAGE_RE = '[undisclosed]'
+PAGE_RE = r'(/(?:[a-zA-Z0-9_-]+/?)*)'
 
 app = webapp2.WSGIApplication([('/signup', SignUp),
 								('/login', Login),
