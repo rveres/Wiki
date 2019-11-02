@@ -10,19 +10,20 @@ body {
     width: 800px;
     margin: 0 auto;
     padding: 10px;
+    color: #333;
 
     text-align: center;
-    background-image: url("/static/login_bg_img.jpg");
+    background-color: #f2f2f2;
     background-repeat: no-repeat;
     background-size: cover;
 
     font-family: 'Source Sans Pro', sans-serif;
-    color: white;
+    color: #000000;
 }
 
 .login-area {
     font-size: 13px;
-    color: #EEEEEE;
+    color: #000000;
     position: absolute;
     top: 10px;
     right: 30px;
@@ -30,14 +31,14 @@ body {
 
 .control-area{
     font-size: 13px;
-    color: #EEEEEE;
+    color: #000000;
     position: absolute;
     top: 10px;
     right: 200px;
 }
 
 .login-link {
-    color: #EEEEEE;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -60,13 +61,8 @@ a {
     color: #EC407A;
 }
 
-#content {
-    min-height: 600px;
+.content {
     font-family: 'Source Sans Pro', sans-serif;
-}
-
-#author {
-    font-size: 16px;
 }
 
 .error, .usrError, .pswError {
@@ -74,7 +70,7 @@ a {
 }
 
 #redirbut, #redirbut2 {
-    color:white;
+    color:#000000;
 }
 
 .wrapper {
@@ -87,7 +83,6 @@ a {
 
 #signupdiv {
     margin: 0 auto;
-    color: black;
 }
 
 label {
@@ -117,7 +112,7 @@ input[type=text], input[type=password] {
 
 .main-title {
     display: block;
-    color: #EEEEEE;;
+    color: #000000;;
     font-size: 60px;
     font-weight: bold;
     text-align: center;
@@ -153,22 +148,26 @@ input[type=text], input[type=password] {
 }
 
 table {
-    color: white;
+    border: none;
+    width: 775px;
+    font-size: 20px;
     border-collapse: collapse;
 
     margin: auto;
 }
 
 td {
-    color: white;
+    height: 35px;
     text-align: left;
-    border-bottom: 5px solid #ddd;
+    border-bottom: 1px solid #ddd;
     border-left: 1px solid #ddd;
 }
 
+tr:nth-child(odd){background-color: #f2f2f2}
+
 .historic-time {
     width: 170px;
-    color: white;
+    color: #757575;
 }
 
 .content-tab {
@@ -177,16 +176,23 @@ td {
 
 .control-tab {
     width: 65px;
-    color: white;
+    text-align: center;
 }
 
-#footer {
-    font-family: 'Source Sans Pro', sans-serif;
-    text-align: left;
+.footer {
     position: fixed;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
+    background-color: none;
+    color: #000000;
+    text-align: center;
+}
+
+.footer a {
+    color: #000000;
+    text-decoration: underline;
+    font-size: 14px;
 }
 
 .credits {
@@ -195,14 +201,4 @@ td {
 
 .photocreds {
     font-size: 10px;
-}
-
-#nav {
-    margin: 0 auto;
-    text-align: center;
-    background-color: #42a5f5;
-}
-
-#controls {
-    background-color: #1565c0;
 }

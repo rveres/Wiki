@@ -11,7 +11,8 @@
 {% endblock %}
 
 {% block content %}
-    
-    {{match | safe}}
+    <p>Last edited by {{ match_author }}</p>    
+
+    {{match_content | safe}}
 
 {% endblock %}
