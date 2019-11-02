@@ -251,7 +251,7 @@ class WikiPage(WikiHandler):
 				self.redirect('/_edit' + path)
 				return
 
-		self.render('wiki_page.html', edit_path = edit_path, history_path = history_path, match_author = match_author, match_content = match_content)
+		self.render('wiki_page.html', path = path, edit_path = edit_path, history_path = history_path, match_author = match_author, match_content = match_content)
 
 class EditPage(WikiHandler):
 	def get(self, path):

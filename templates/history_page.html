@@ -14,7 +14,10 @@
                         <td class="historic-time">
                             {{page.created.strftime("%b %d, %Y %X")}}
                         </td>
-                        <td style="color:black" class="mdl-data-table__cell--non-numeric">
+                        <td style="color:black" class="control-tab">
+                            {{page.author}}
+                        </td>
+                        <td style="color:black; text-align: left;">
                             {{page.content[:100]}}
                         </td>
                         <td class="control-tab">
